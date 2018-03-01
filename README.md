@@ -4,7 +4,7 @@ You can easily read a complex object from (or write to) multiple related tables 
 
 Definitely the Derafsh will not meet all your needs. But it probably will remove a lot of repetitive tasks.
 ## ViewModels Programming
-Everything's that Derafsh does is based on the ViewModels (complex objects). All you need to do is to prepare the ViewModel 
+Everything that Derafsh does is based on the ViewModels (complex objects). All you need to do is to prepare the ViewModel 
 and then the Derafsh will do the rest. Perhaps we can call it, ViewModels Programming or ViewModels O/RM. 
 ## Constraints
 Before get started you must know there is some constraints in this version. I'm working hard to removing these constraints in
