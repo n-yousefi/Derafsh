@@ -1,6 +1,8 @@
 # Derafsh O/RM
 Derafsh is an object-relational mapper that enables .NET developers to read or write operations in single statements. 
 You can easily read a complex object from (or write to) multiple related tables at SQL Server database.
+
+Definitely the Derafsh will not meet all your needs. But it probably will remove a lot of repetitive tasks.
 ## ViewModels Programming
 Everything's that Derafsh does is based on the ViewModels (complex objects). All you need to do is to prepare the ViewModel 
 and then the Derafsh will do the rest. Perhaps we can call it, ViewModels Programming or ViewModels O/RM. 
