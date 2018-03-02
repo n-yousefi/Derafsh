@@ -2,18 +2,17 @@
 Derafsh is an object-relational mapper that enables .NET developers to read or write operations in single statements. 
 You can easily read a complex object from (or write to) multiple related tables at SQL Server database.
 
-Definitely the Derafsh will not meet all your needs. But it probably will remove a lot of repetitive tasks.
+Definitely, Derafsh does not satisfy all your needs, But it probably will remove a lot of repetitive tasks.
 ## ViewModels Programming
-Everything that Derafsh does is based on the ViewModels (complex objects). All you need to do is to prepare the ViewModel 
-and then the Derafsh will do the rest. Perhaps we can call it, ViewModels Programming or ViewModels O/RM. 
+Everything that Derafsh does is based on the ViewModels (complex objects). You just need to prapare the prepare the ViewModel 
+and then Derafsh will do the rest. Perhaps we can call it, ViewModels Programming or ViewModels O/RM. 
 ## Constraints
-Before get started you must know there is some constraints in this version. I'm working hard to removing these constraints in
-the newer versions.
-1. Your tables primary key must be named "Id" (Case Sensitive) and must be auto increment identifier. I will probably 
+Before getting started you should know there are some constraints in this version. I'm working hard to remove these constraints in the newer versions.
+1. The primary key of your tables must be named "Id" (sensitive case) and must be an auto increment identifier. I will probably 
 create new attributes for the primary and foreign keys.
 2. You can use the Join attribute only for the foreign keys that have this pattern: [ForeignTableName + "Id"] like "PersonId"
 3. All ViewModels must declare the table name with TableAttribute (located in System.ComponentModel.DataAnnotations.Schema).
-this means you can't specify table name in parent class for Now.
+This means that you can't specify table name in parent class for Now.
 
 ## Installing
 Install as [NuGet package](https://www.nuget.org/packages/Derafsh/):
@@ -26,7 +25,7 @@ Install-Package Derafsh
 dotnet add package Derafsh
 ```
 ## Getting Started
-I will use these tables for my examples:
+I'm going to use these tables for my examples:
 ![Example](https://github.com/n-yousefi/Derafsh/blob/master/diagram.png)
 The Identity model:
 ```c#
@@ -44,25 +43,25 @@ public class Identity
 With Derafsh you can easily read multiple related tables to a ViewModel List or write a ViewModel to its own tables.
 You must create your own object and determine the relations between the tables. 
 #### Join 
-If your model contains some foreign keys then you can use the Join attribute to specify that relation for the Derafsh.
-(This means you can use the Join attribute in One-to-One or Many-To-One relationships)
+If your model contains some foreign keys then you can use the Join attribute to specify that relation for Derafsh.
+(This means that you can use the Join attribute in One-to-One or Many-To-One relationships)
 In the example if I create the ViewModel like this:
 ```c#
 [Join]
 public PersonViewModel Person { get; set; }
 public OrganizationViewModel Organization { get; set; }
 ```
-Derafsh will ignore the Organization but will read/write the related Person of the Identity.
+Then Derafsh will ignore the Organization but it will read/write the related Person by the Identity.
 #### InverseJoin
-If you have One-to-Many relationships that means your table primary key is foreign key in another tables, you can use the
+If you have One-to-Many relationships that means your table primary key is a foreign key in other tables, you can use the
 InverseJoin attribute.
-In the example if I create the ViewModel like this:
+In the example if I create the ViewModel as follow:
 ```c#
 [InverseJoin]       
 public List<PhoneViewModel> Phone { get; set; }
 public List<AddressViewModel> Address { get; set; }
 ```
-Derafsh will ignore the Address but will read/write the list of Identity related Phones.
+Then Derafsh will ignore the Address but it will read/write the list of Phones for the Identity.
 
 Full ViewModel for Identity:
 ```c#
@@ -146,7 +145,7 @@ conditions.AddCondition("TableName", "Condition");
 conditions.AddPublicCondition("ColumnName","Condition");
 ```
 #### Filtering the results
-You can filter the results based on your preference. 
+You can filter the results based on your preferments. 
 ```c#
 public FilterRequest(int pageNumber, int pageSize, string sort, string sortDirection, string searchPhrase);
 ```
@@ -160,7 +159,7 @@ conditions.AddPublicCondition("IsDeleted", "IsDeleted=0");
 var filter = new FilterRequest(1,20,"Id","Asc","");
 IEnumerable<IdentityViewModel> items = await databaseActions.Select<IdentityViewModel>(conditions, filter);
 ```
-### Find by id 
+### Finding by id 
 ```c#
 Task<T> Find<T>(int id, QueryConditions queryConditions = null, SqlTransaction transaction = null);
 ```
@@ -179,8 +178,8 @@ Task<DataTable> Abstract<T>(string conditions = null, FilterRequest filterReques
 You can use the Abstract attribute over the Join properties (Not over the InversJoins).
 **Note:** For now, you can only use this attribute only over the Table columns properties. 
 
-In the Example if I mentioned the Person Join used for abstract result the All Person abstract properties are appended to the
-Abstract method result for Identity.
+In the Example if I use Abstract attribute over the Person Join then the Person abstract properties also will be seen in the
+result.
 ```c#
 [Table("Identity")]
 public class IdentityViewModel:Models.Identity
@@ -212,9 +211,9 @@ var filter = new FilterRequest(1, pageSize, "Id", "Asc", "");
 var conditions = "Date > '2012-11-29 18:21:11.123' and Identity.IsActive = 1 and Identity.Isdeleted = 0"
 var items = await databaseActions.Abstract<IdentityViewModel>(conditions, filter);
 ```
-### Update a ViewModel in database
+### Update a ViewModel in the database
 You can pass a ViewModel to Update method and then all VewModel instances will be updated in database.
-**Note:** all instance in update method must have an Id property filled with valid value!
+**Note:** all instances in update method must have an Id property filled with valid value!
 Task<int> Update<T>(object viewModel,CancellationToken cancellationToken, SqlTransaction transaction = null);
 ```c#
 var identity = new IdentityViewModel()
