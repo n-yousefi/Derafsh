@@ -195,20 +195,20 @@ public class IdentityViewModel:Models.Identity
 public class PersonViewModel:Models.Person
 {
      [Abstract]
-     [Display(Name = "First Name") 
+     [Display(Name = "First Name")]
      public string FirstName { get; set; }
      [Abstract]
-     [Display(Name = "Last Name") 
+     [Display(Name = "Last Name")]
      public string LastName { get; set; }
 }
 [Table("Organization")]
 public class OrganizationViewModel:Models.Organization
 {
      [Abstract]
-     [Display(Name = "Company") 
+     [Display(Name = "Company")]
      public string Name { get; set; }
      [Abstract]
-     [Display(Name = "Registration Number") 
+     [Display(Name = "Registration Number")]
      public string RegistrationNumber { get; set; }
 }
 ```
