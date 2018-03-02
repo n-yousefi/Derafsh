@@ -187,21 +187,28 @@ public class IdentityViewModel:Models.Identity
      [Abstract]
      [Join]
      public PersonViewModel Person { get; set; }
+     [Abstract]
+     [Join]
+     public OrganizationViewModel Organization { get; set; }
 }
 [Table("Person")]
 public class PersonViewModel:Models.Person
 {
      [Abstract]
+     [Display(Name = "First Name") 
      public string FirstName { get; set; }
      [Abstract]
+     [Display(Name = "Last Name") 
      public string LastName { get; set; }
 }
 [Table("Organization")]
 public class OrganizationViewModel:Models.Organization
 {
      [Abstract]
+     [Display(Name = "Company") 
      public string Name { get; set; }
      [Abstract]
+     [Display(Name = "Registration Number") 
      public string RegistrationNumber { get; set; }
 }
 ```
@@ -211,6 +218,13 @@ var filter = new FilterRequest(1, pageSize, "Id", "Asc", "");
 var conditions = "Date > '2012-11-29 18:21:11.123' and Identity.IsActive = 1 and Identity.Isdeleted = 0"
 var items = await databaseActions.Abstract<IdentityViewModel>(conditions, filter);
 ```
+|  First Name   |   Last Name   |   Company  | Registration Number |
+| ------------- | ------------- | ---------- | ------------------- |
+|     null      |      null     | Opt-xa Inc |     3242342352      |
+|     Javad     | Hajian-nezhad |    null    |        null         |
+|    Mohammad   |  Kheirandish  |    null    |        null         |
+|     null      |      null     | Desire Inc |     9873214654      |
+
 ### Update a ViewModel in the database
 You can pass a ViewModel to Update method and then all VewModel instances will be updated in database.
 **Note:** all instances in update method must have an Id property filled with valid value!
