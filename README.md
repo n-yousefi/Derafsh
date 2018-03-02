@@ -178,7 +178,7 @@ Task<DataTable> Abstract<T>(string conditions = null, FilterRequest filterReques
 You can use the Abstract attribute over the Join properties (Not over the InversJoins).
 **Note:** For now, you can only use this attribute only over the Table columns properties. 
 
-In the Example if I use Abstract attribute over the Person Join then the Person abstract properties also will be seen in the
+In the Example if I use Abstract attribute over the Person Join then the Person abstract properties will also be seen in the
 result.
 ```c#
 [Table("Identity")]
