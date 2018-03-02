@@ -271,3 +271,10 @@ but feel free to use Derafsh. I will add some options for selecting desired prop
 ```c#
 Task<int> UpdateByParentSoftDelete<T>(object viewModel, CancellationToken cancellationToken = null);
 ```
+## Authors
+<a href="https://stackexchange.com/users/3919456">
+<img src="https://stackexchange.com/users/flair/3919456.png" width="208" height="58" alt="profile for Naser Yousefi on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Naser Yousefi on Stack Exchange, a network of free, community-driven Q&amp;A sites">
+</a>
+     
+ ## License
+Licensed under the Apache License, Version 2.0.
