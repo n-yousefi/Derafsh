@@ -6,13 +6,7 @@ Definitely, Derafsh does not satisfy all your needs, But it probably will remove
 ## ViewModels Programming
 Everything that Derafsh does is based on the ViewModels (complex objects). You just need to prapare the prepare the ViewModel 
 and then Derafsh will do the rest. Perhaps we can call it, ViewModels Programming or ViewModels O/RM. 
-## Constraints
-Before getting started you should know there are some constraints in this version. I'm working hard to remove these constraints in the newer versions.
-1. The primary key of your tables must be named "Id" (sensitive case) and must be an auto increment identifier. I will probably 
-create new attributes for the primary and foreign keys.
-2. You can use the Join attribute only for the foreign keys that have this pattern: [ForeignTableName + "Id"] like "PersonId"
-3. All ViewModels must declare the table name with TableAttribute (located in System.ComponentModel.DataAnnotations.Schema).
-This means that you can't specify table name in parent class for Now.
+
 
 ## Installing
 Install as [NuGet package](https://www.nuget.org/packages/Derafsh/):
@@ -31,10 +25,13 @@ The Identity model:
 ```c#
 public class Identity
 {
-     public int Id {get; set;}
+     [PrimaryKey]
+     public int Id {get; set;}
      public int IdentityEnumId { get; set; } 
-     public int? PersonId { get; set; }
-     public int? OrganizationId { get; set; }
+     [ForeignKey("Person")]
+     public int? PersonId { get; set; }
+     [ForeignKey("Organization")]
+     public int? OrganizationId { get; set; }
      public bool IsActive {get; set;}
      public bool IsDeleted {get; set;}
 }
