@@ -1,0 +1,9 @@
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\netcoreapp2.0\Rasha.Orm.csproj.CoreCompileInputs.cache
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\netcoreapp2.0\Rasha.Orm.AssemblyInfoInputs.cache
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\netcoreapp2.0\Rasha.Orm.AssemblyInfo.cs
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\bin\Debug\netcoreapp2.0\Rasha.Orm.deps.json
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\bin\Debug\netcoreapp2.0\Rasha.Orm.dll
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\bin\Debug\netcoreapp2.0\Rasha.Orm.pdb
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\netcoreapp2.0\Rasha.Orm.dll
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\netcoreapp2.0\Rasha.Orm.pdb
+E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\netcoreapp2.0\Rasha.Orm.csprojResolveAssemblyReference.cache

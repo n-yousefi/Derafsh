@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>Derafsh</PackageId>
+    <version>1.0.0</version>
+    <Authors>Naser Yousefi</Authors>
+    <Title>Derafsh</Title>
+    <Copyright>2018 Naser Yousefi</Copyright>
+    <Description>Derafsh is an object-relational mapper that enables .NET developers to read or write operations in single statements. You can easily read a complex object from (or write to) multiple related tables at SQL Server database.</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/n-yousefi/Derafsh</PackageProjectUrl>
+    <PackageTags>ASP.Net;ORM;EntityFramework;Sql;SqlServer;ADO.NET</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Update\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.2" />
+  </ItemGroup>
+
+</Project>
