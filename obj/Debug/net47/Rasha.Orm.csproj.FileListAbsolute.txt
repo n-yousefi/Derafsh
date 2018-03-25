@@ -1,4 +1,0 @@
-E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\net47\Rasha.Orm.csproj.CoreCompileInputs.cache
-E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\net47\Rasha.Orm.AssemblyInfoInputs.cache
-E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\net47\Rasha.Orm.AssemblyInfo.cs
-E:\naser\C#\Tolid\Project\Daarto-master\Rasha\Rasha.Orm\obj\Debug\net47\Rasha.Orm.csprojResolveAssemblyReference.cache
