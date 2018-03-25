@@ -7,6 +7,9 @@ Definitely, Derafsh does not satisfy all your needs, But it probably will remove
 Everything that Derafsh does is based on the ViewModels (complex objects). You just need to prapare the prepare the ViewModel 
 and then Derafsh will do the rest. Perhaps we can call it, ViewModels Programming or ViewModels O/RM. 
 
+## An example
+With the help of Derafsh, we can create one insert, edit or index form for all objects and complex objects. I've created a simple example to show the goal of creating Derafsh: 
+* [Derafsh-Sample](https://github.com/n-yousefi/Derafsh-Sample)
 
 ## Installing
 Install as [NuGet package](https://www.nuget.org/packages/Derafsh/):
