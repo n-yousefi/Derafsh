@@ -1,3 +1,4 @@
+## This repo has been deprecated as it is legacy and is no longer maintained.
 # Derafsh O/RM
 Derafsh is an object-relational mapper that enables .NET developers to read or write operations in single statements. 
 You can easily read a complex object from (or write to) multiple related tables at SQL Server database.
