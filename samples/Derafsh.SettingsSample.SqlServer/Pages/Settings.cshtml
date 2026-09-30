@@ -1,0 +1,101 @@
+@page
+@model Derafsh.SettingsSample.SqlServer.Pages.SettingsModel
+@{
+    ViewData["Title"] = "Store Settings";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Derafsh Settings Sample</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<main class="shell">
+    <header class="hero">
+        <span class="eyebrow">DERAFSH SAMPLE</span>
+        <h1>Store settings</h1>
+        <p>One relational form. Four SQL Server tables. One graph save operation.</p>
+    </header>
+
+    @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+    {
+        <div class="notice">@Model.StatusMessage</div>
+    }
+
+    <form method="post" id="settings-form">
+        <input asp-for="Settings.Id" type="hidden" />
+        <div asp-validation-summary="All" class="validation"></div>
+
+        <section class="card grid-3">
+            <label>
+                Store name
+                <input asp-for="Settings.StoreName" />
+                <small><span asp-validation-for="Settings.StoreName"></span></small>
+            </label>
+            <label>
+                Currency
+                <input asp-for="Settings.Currency" />
+                <small><span asp-validation-for="Settings.Currency"></span></small>
+            </label>
+            <label>
+                Time zone
+                <input asp-for="Settings.TimeZone" />
+                <small><span asp-validation-for="Settings.TimeZone"></span></small>
+            </label>
+        </section>
+
+        <section class="card collection" data-collection="Contacts">
+            <div class="section-title"><div><h2>Contacts</h2><p>Phone numbers, email addresses, or other contact channels.</p></div><button type="button" class="secondary" data-add>Add contact</button></div>
+            <div data-rows>
+                @for (var i = 0; i < (Model.Settings.Contacts?.Count ?? 0); i++)
+                {
+                    <div class="row" data-row>
+                        <input asp-for="Settings.Contacts[i].Id" type="hidden" data-field="Id" />
+                        <input asp-for="Settings.Contacts[i].StoreSettingsId" type="hidden" data-field="StoreSettingsId" />
+                        <select asp-for="Settings.Contacts[i].Type" data-field="Type"><option>Phone</option><option>Email</option><option>Other</option></select>
+                        <input asp-for="Settings.Contacts[i].Value" data-field="Value" placeholder="Contact value" />
+                        <button type="button" class="danger" data-remove>Remove</button>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <section class="card collection" data-collection="ShippingZones">
+            <div class="section-title"><div><h2>Shipping zones</h2><p>Country-specific delivery fees.</p></div><button type="button" class="secondary" data-add>Add zone</button></div>
+            <div data-rows>
+                @for (var i = 0; i < (Model.Settings.ShippingZones?.Count ?? 0); i++)
+                {
+                    <div class="row" data-row>
+                        <input asp-for="Settings.ShippingZones[i].Id" type="hidden" data-field="Id" />
+                        <input asp-for="Settings.ShippingZones[i].StoreSettingsId" type="hidden" data-field="StoreSettingsId" />
+                        <input asp-for="Settings.ShippingZones[i].CountryCode" data-field="CountryCode" placeholder="NL" maxlength="2" />
+                        <input asp-for="Settings.ShippingZones[i].Fee" data-field="Fee" type="number" step="0.01" min="0" placeholder="5.00" />
+                        <button type="button" class="danger" data-remove>Remove</button>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <section class="card collection" data-collection="NotificationRecipients">
+            <div class="section-title"><div><h2>Notification recipients</h2><p>People who receive operational notifications.</p></div><button type="button" class="secondary" data-add>Add recipient</button></div>
+            <div data-rows>
+                @for (var i = 0; i < (Model.Settings.NotificationRecipients?.Count ?? 0); i++)
+                {
+                    <div class="row" data-row>
+                        <input asp-for="Settings.NotificationRecipients[i].Id" type="hidden" data-field="Id" />
+                        <input asp-for="Settings.NotificationRecipients[i].StoreSettingsId" type="hidden" data-field="StoreSettingsId" />
+                        <input asp-for="Settings.NotificationRecipients[i].Email" data-field="Email" type="email" placeholder="ops@example.com" />
+                        <button type="button" class="danger" data-remove>Remove</button>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <div class="actions"><button type="submit" class="primary">Save settings</button></div>
+    </form>
+</main>
+<script src="~/js/collections.js"></script>
+</body>
+</html>

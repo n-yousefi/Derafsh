@@ -1,0 +1,16 @@
+{
+  "version": "1.0.1",
+  "name": "Derafsh",
+  "path": "C:\\Users\\Yousefi.Naser\\Desktop\\personal\\my\\Derafsh",
+  "stats": {
+    "files": 3,
+    "symbols": 3,
+    "relationships": 3,
+    "clusters": 0,
+    "flows": 0,
+    "dead_code": 3,
+    "coupled_pairs": 0,
+    "embeddings": 6
+  },
+  "last_indexed_at": "2026-09-13T04:34:23.374628+00:00"
+}

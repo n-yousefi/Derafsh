@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>Derafsh</PackageId>
+    <Title>Derafsh</Title>
+    <Version>2.0.0</Version>
+    <Authors>Naser Yousefi</Authors>
+    <Description>Relational graph persistence for .NET data-entry and settings features. Keep SQL explicit; stop hand-writing graph CRUD.</Description>
+    <PackageTags>dapper;sqlserver;sqlite;graph;persistence;data-entry;settings;crud;micro-orm</PackageTags>
+    <PackageProjectUrl>https://github.com/n-yousefi/Derafsh</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/n-yousefi/Derafsh</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.79" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>
