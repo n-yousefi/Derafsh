@@ -13,6 +13,10 @@ jobs:
   build-test-publish:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      id-token: write
+
     services:
       sqlserver:
         image: mcr.microsoft.com/mssql/server:2022-latest
@@ -60,7 +64,11 @@ jobs:
       - name: Pack
         run: dotnet pack src/Derafsh/Derafsh.csproj --configuration Release --output artifacts -p:Version="${PACKAGE_VERSION}"
 
+      - name: NuGet login (OIDC → short-lived API key)
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: 'N.Yousefi'
+
       - name: Publish to nuget.org
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        run: dotnet nuget push artifacts/*.nupkg --api-key "${NUGET_API_KEY}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push artifacts/*.nupkg --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
