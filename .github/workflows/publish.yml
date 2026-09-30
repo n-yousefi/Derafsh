@@ -1,0 +1,66 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+
+    services:
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        env:
+          ACCEPT_EULA: Y
+          MSSQL_SA_PASSWORD: 'Derafsh_Test_2026!'
+        ports:
+          - 1433:1433
+
+    env:
+      DERAFSH_TEST_CONNECTION_STRING: 'Server=localhost,1433;Database=master;User Id=sa;Password=Derafsh_Test_2026!;Encrypt=False;TrustServerCertificate=True'
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore Derafsh.sln
+
+      - name: Build
+        run: dotnet build Derafsh.sln --configuration Release --no-restore
+
+      - name: Unit tests
+        run: dotnet test tests/Derafsh.Tests/Derafsh.Tests.csproj --configuration Release --no-build
+
+      - name: SQL Server and SQLite integration tests
+        run: dotnet test tests/Derafsh.IntegrationTests/Derafsh.IntegrationTests.csproj --configuration Release --no-build
+
+      - name: Determine package version
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            VERSION="$(dotnet msbuild src/Derafsh/Derafsh.csproj -getProperty:Version)"
+          fi
+          if [ -z "$VERSION" ]; then
+            echo "Could not determine the package version." >&2
+            exit 1
+          fi
+          echo "PACKAGE_VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Pack
+        run: dotnet pack src/Derafsh/Derafsh.csproj --configuration Release --output artifacts -p:Version="${PACKAGE_VERSION}"
+
+      - name: Publish to nuget.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push artifacts/*.nupkg --api-key "${NUGET_API_KEY}" --source https://api.nuget.org/v3/index.json --skip-duplicate
